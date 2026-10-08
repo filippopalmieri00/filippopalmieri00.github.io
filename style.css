@@ -15,6 +15,7 @@
   --rule-light: #ffffff;  /* filetto: linea chiara */
   --frame: #fbfbf9;       /* fondo della cornice foto e del riquadro contatti */
   --focus-bg: #fff1a1;    /* evidenziazione del focus da tastiera */
+  --target: #e3e9f6;      /* voce evidenziata quando si clicca una nota [1] */
 
   --serif: Georgia, "Times New Roman", Times, serif;
   --sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -216,7 +217,68 @@ hr {
 
 /* ---------- apertura ---------- */
 
-.intro > p:not(.cta) { margin-bottom: 1.1rem; }
+/* Apertura in stile voce d'enciclopedia: testo con note e scheda a destra.
+   Su telefono la scheda scende dopo il primo paragrafo. */
+.intro {
+  display: flex;
+  flex-direction: column;
+}
+.intro .lead { margin-bottom: 1rem; }
+.intro .lead-1 { order: 1; }
+.intro .infobox { order: 2; }
+.intro .lead-2 { order: 3; }
+.intro .lead-3 { order: 4; }
+.intro .cta { order: 5; margin-top: 0.3rem; }
+
+@media (min-width: 36em) {
+  .intro { display: flow-root; }
+  .intro .infobox { float: right; width: 15rem; margin: 0.3rem 0 1rem 1.4rem; }
+}
+
+.infobox {
+  margin: 0.2rem 0 1.2rem;
+  padding: 0.6rem 0.7rem 0.7rem;
+  background: var(--frame);
+  border: 1px solid var(--rule-dark);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.ib-title {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+.infobox img {
+  display: block;
+  width: 9.5rem;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 0.6rem;
+  border: 1px solid var(--rule-dark);
+}
+.infobox table { width: 100%; border-collapse: collapse; }
+.infobox th, .infobox td {
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--rule-light);
+  box-shadow: 0 -1px 0 var(--rule-dark) inset;
+  vertical-align: top;
+  text-align: left;
+}
+.infobox tr:last-child th, .infobox tr:last-child td { box-shadow: none; }
+.infobox th { width: 38%; padding-right: 0.5rem; font-weight: bold; }
+
+sup.ref {
+  font-family: var(--sans);
+  font-size: 0.7em;
+  line-height: 0;
+  white-space: nowrap;
+}
+sup.ref a { text-decoration: none; }
+sup.ref a:hover { text-decoration: underline; }
+
+.entry:target { background: var(--target); box-shadow: -0.5rem 0 0 var(--target), 0.5rem 0 0 var(--target); }
 
 .cta {
   display: flex;
@@ -369,27 +431,6 @@ h2::before {
 /* ---------- chi sono ---------- */
 
 .about-body { display: flow-root; }
-
-.portrait {
-  float: right;
-  width: 8.5rem;
-  margin: 0.35rem 0 0.75rem 1.25rem;
-  padding: 4px;
-  background: var(--frame);
-  border: 1px solid var(--rule-dark);
-}
-
-.portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-@media (max-width: 30em) {
-  .portrait { width: 6.5rem; margin-left: 1rem; }
-}
 
 .cv {
   margin: 0.2rem 0 0;

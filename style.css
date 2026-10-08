@@ -16,6 +16,7 @@
   --frame: #fbfbf9;       /* fondo della cornice foto e del riquadro contatti */
   --focus-bg: #fff1a1;    /* evidenziazione del focus da tastiera */
   --target: #e3e9f6;      /* voce evidenziata quando si clicca una nota [1] */
+  --cell: #e6e6e0;        /* fondo delle etichette nella scheda */
 
   --serif: Georgia, "Times New Roman", Times, serif;
   --sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -217,57 +218,77 @@ hr {
 
 /* ---------- apertura ---------- */
 
-/* Apertura in stile voce d'enciclopedia: testo con note e scheda a destra.
-   Su telefono la scheda scende dopo il primo paragrafo. */
-.intro {
-  display: flex;
-  flex-direction: column;
-}
+/* Apertura in stile voce d'enciclopedia.
+   Desktop: due colonne allineate in alto (testo | scheda). Telefono: testo, poi scheda. */
+.intro { display: block; }
+.lead-text { min-width: 0; }
 .intro .lead { margin-bottom: 1rem; }
-.intro .lead-1 { order: 1; }
-.intro .infobox { order: 2; }
-.intro .lead-2 { order: 3; }
-.intro .lead-3 { order: 4; }
-.intro .cta { order: 5; margin-top: 0.3rem; }
+.intro .lead:first-child, .intro .lead[data-l]:nth-child(-n+2) { margin-top: 0; }
+.intro .cta { margin-top: 0.4rem; }
+.intro .infobox { margin-top: 1.6rem; }
 
 @media (min-width: 36em) {
-  .intro { display: flow-root; }
-  .intro .infobox { float: right; width: 15rem; margin: 0.3rem 0 1rem 1.4rem; }
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    column-gap: 1.6rem;
+    align-items: start;
+  }
+  .intro .infobox { margin-top: 0.3rem; }
 }
 
+/* Scheda: tabella a celle, come le tabelle HTML degli anni Novanta */
 .infobox {
-  margin: 0.2rem 0 1.2rem;
-  padding: 0.6rem 0.7rem 0.7rem;
+  border: 1px solid var(--ink-soft);
   background: var(--frame);
-  border: 1px solid var(--rule-dark);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 .ib-title {
-  margin: 0 0 0.5rem;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  background: var(--link);
+  color: #ffffff;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
   text-align: center;
 }
-.infobox img {
+.ib-photo {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--ink-soft);
+  text-align: center;
+}
+.ib-photo img {
   display: block;
-  width: 9.5rem;
+  width: 9rem;
   max-width: 100%;
   height: auto;
-  margin: 0 auto 0.6rem;
+  margin: 0 auto;
   border: 1px solid var(--rule-dark);
 }
-.infobox table { width: 100%; border-collapse: collapse; }
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
 .infobox th, .infobox td {
-  padding: 0.3rem 0;
-  border-top: 1px solid var(--rule-light);
-  box-shadow: 0 -1px 0 var(--rule-dark) inset;
+  padding: 0.32rem 0.45rem;
+  border: 1px solid var(--rule-dark);
   vertical-align: top;
   text-align: left;
+  overflow-wrap: anywhere;
 }
-.infobox tr:last-child th, .infobox tr:last-child td { box-shadow: none; }
-.infobox th { width: 38%; padding-right: 0.5rem; font-weight: bold; }
+.infobox tr:first-child th, .infobox tr:first-child td { border-top: 0; }
+.infobox tr:last-child th, .infobox tr:last-child td { border-bottom: 0; }
+.infobox th { border-left: 0; }
+.infobox td { border-right: 0; }
+.infobox th {
+  width: 40%;
+  background: var(--cell);
+  font-weight: bold;
+}
 
 sup.ref {
   font-family: var(--sans);

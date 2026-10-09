@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagina non trovata | Filippo Palmieri</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css?v=6">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body>
+
+<!--
+  Pagina mostrata da GitHub Pages quando un indirizzo del sito non esiste.
+  I percorsi iniziano con "/" perché la pagina può comparire a qualsiasi indirizzo.
+-->
+
+<div class="desk">
+<div class="window">
+
+  <header class="chrome">
+    <div class="tabstrip">
+      <a class="tab tab-home tab-wide tab-active" href="/">
+        <img class="tab-icon" src="/favicon.svg" width="16" height="16" alt="">
+        <span class="tab-title">Pagina non trovata · Page not found</span>
+      </a>
+    </div>
+    <div class="toolbar">
+      <div class="nav-buttons needs-js">
+        <button type="button" class="gel gel-round" id="go-back" aria-label="Indietro / Back" title="Indietro / Back">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M9.5 3.5 5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+        </button>
+      </div>
+      <div class="omnibox" role="group" aria-label="Indirizzo / Address">
+        <svg class="omni-star" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="#fff6d0" stroke="#9aa9bf" stroke-width="1"/></svg>
+        <span class="url"><span class="url-scheme">https</span><span class="url-sep">://</span><span class="url-host">filippopalmieri00.github.io</span><span class="url-path" id="url-path">/…</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page err">
+    <svg class="err-icon" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+      <path d="M14 6h26l12 12v40H14z" fill="#ffffff" stroke="#7d8ea8" stroke-width="2"/>
+      <path d="M40 6v12h12" fill="#e4eaf3" stroke="#7d8ea8" stroke-width="2"/>
+      <path d="M14 40l8-4 6 5 8-6 7 4 9-3" fill="none" stroke="#7d8ea8" stroke-width="2"/>
+      <path d="M20 26h20M20 31h14" stroke="#b7c2d2" stroke-width="2.5"/>
+      <path d="M22 50h22" stroke="#e0e6ee" stroke-width="2.5"/>
+    </svg>
+
+    <div lang="it">
+      <h1>Pagina non trovata</h1>
+      <p>L’indirizzo che hai aperto non corrisponde a nessuna pagina di questo sito: forse il link è incompleto, oppure la pagina è stata spostata.</p>
+    </div>
+    <div lang="en" class="err-en">
+      <h2>Page not found</h2>
+      <p>The address you opened does not match any page on this site: the link may be incomplete, or the page may have moved.</p>
+    </div>
+
+    <p class="cta">
+      <a class="gel gel-primary" href="/">Pagina principale · <span lang="en">Home page</span></a>
+      <a class="gel" href="/#works">Lavori · <span lang="en">Work</span></a>
+      <a class="gel" href="/#contact">Contatti · <span lang="en">Contact</span></a>
+    </p>
+  </main>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    var path = document.getElementById("url-path");
+    if (path) path.textContent = window.location.pathname + window.location.search + window.location.hash;
+    var back = document.getElementById("go-back");
+    if (back) back.addEventListener("click", function () { window.history.back(); });
+  })();
+</script>
+
+</body>
+</html>

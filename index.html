@@ -22,7 +22,7 @@
 <link rel="alternate" hreflang="en" href="https://filippopalmieri00.github.io/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://filippopalmieri00.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <script>
   /* Sceglie la lingua prima che la pagina compaia: l'indirizzo con ?lang=en apre la versione inglese. */
   (function () {
@@ -31,9 +31,13 @@
     try {
       if (new URLSearchParams(window.location.search).get("lang") === "en") root.lang = "en-GB";
     } catch (e) {}
+    /* Sul computer le sezioni si aprono come schede: lo decide subito, per evitare uno sfarfallio */
+    try {
+      if (window.matchMedia("(min-width: 761px)").matches) root.className += " tabbed";
+    } catch (e) {}
   })();
 </script>
-<script src="main.js?v=5" defer></script>
+<script src="main.js?v=6" defer></script>
 </head>
 <body>
 
@@ -54,13 +58,34 @@
   <!-- ===================== FINESTRA DEL BROWSER (2008) ===================== -->
   <header class="chrome">
 
-    <div class="tabstrip">
-      <div class="tab tab-active">
+    <!--
+      SCHEDE: ognuna apre una sezione, come le schede di un browser.
+      Sul computer (con JavaScript) si vede una sezione alla volta; sul telefono
+      e senza JavaScript si vede tutta la pagina e c'è solo la prima scheda.
+    -->
+    <nav class="tabstrip" aria-label="Pagine del sito" data-aria-it="Pagine del sito" data-aria-en="Site pages">
+      <a class="tab tab-home tab-active" href="#home" data-tab="home">
         <img class="tab-icon" src="favicon.svg" width="16" height="16" alt="">
         <span class="tab-title">Filippo Palmieri | Portfolio</span>
-      </div>
+      </a>
+      <a class="tab tab-more" href="#topics" data-tab="topics">
+        <svg class="ico tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>
+        <span class="tab-title"><span data-l="it">Proposte</span><span data-l="en">Pitches</span></span>
+      </a>
+      <a class="tab tab-more" href="#research" data-tab="research">
+        <svg class="ico tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg>
+        <span class="tab-title"><span data-l="it">Ricerca</span><span data-l="en">Research</span></span>
+      </a>
+      <a class="tab tab-more" href="#about" data-tab="about">
+        <svg class="ico tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg>
+        <span class="tab-title"><span data-l="it">Chi sono</span><span data-l="en">About</span></span>
+      </a>
+      <a class="tab tab-more" href="#contact" data-tab="contact">
+        <svg class="ico tab-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>
+        <span class="tab-title"><span data-l="it">Contatti</span><span data-l="en">Contact</span></span>
+      </a>
       <a class="newtab" href="./" target="_blank" rel="noopener" aria-label="Apri il sito in una nuova scheda" data-aria-it="Apri il sito in una nuova scheda" data-aria-en="Open the site in a new tab" title="Nuova scheda" data-title-it="Nuova scheda" data-title-en="New tab"><span aria-hidden="true">+</span></a>
-    </div>
+    </nav>
 
     <div class="toolbar">
       <div class="nav-buttons needs-js">
@@ -86,9 +111,21 @@
       </nav>
     </div>
 
-    <nav class="bookmarks" aria-label="Sezioni" data-aria-it="Sezioni" data-aria-en="Sections">
-      <ul>
+    <!--
+      PREFERITI: sul computer portano ai tuoi lavori e profili fuori dal sito;
+      sul telefono, dove le schede non ci sono, portano alle sezioni della pagina.
+    -->
+    <nav class="bookmarks" aria-label="Preferiti" data-aria-it="Preferiti" data-aria-en="Bookmarks">
+      <ul class="bm-links">
+        <li><a href="https://www.populismstudies.org/from-mass-parties-to-digital-bubbles-how-young-europeans-encounter-politics/" hreflang="en"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>ECPS</a></li>
+        <li><a href="https://www.sistemacritico.it/author/f-palmieri/" hreflang="it"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>Sistema Critico</a></li>
+        <li><a href="https://www.linkedin.com/in/filippo-palmieri-10010832b/"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>LinkedIn</a></li>
+        <li><a href="https://orcid.org/0009-0000-1332-5478"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>ORCID</a></li>
+        <li class="bm-right"><a href="Filippo_Palmieri_CV.pdf" type="application/pdf"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg>CV (PDF)</a></li>
+      </ul>
+      <ul class="bm-sections">
         <li><a href="#works"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Lavori</span><span data-l="en">Work</span></a></li>
+        <li><a href="#topics"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg><span data-l="it">Proposte</span><span data-l="en">Pitches</span></a></li>
         <li><a href="#research"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Ricerca</span><span data-l="en">Research</span></a></li>
         <li><a href="#about"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Chi sono</span><span data-l="en">About</span></a></li>
         <li><a href="#contact"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg><span data-l="it">Contatti</span><span data-l="en">Contact</span></a></li>
@@ -100,6 +137,9 @@
 
   <!-- ===================== CONTENUTO DELLA PAGINA ===================== -->
   <main id="main" class="page" tabindex="-1">
+
+    <!-- Prima scheda: apertura + griglia dei lavori -->
+    <div id="home" class="view is-current" data-panel data-doc-it="Filippo Palmieri | Portfolio" data-doc-en="Filippo Palmieri | Portfolio">
 
     <!-- ===================== APERTURA (voce in stile enciclopedia) ===================== -->
     <section class="intro" aria-labelledby="name">
@@ -154,7 +194,7 @@
 
         <li class="tile" id="w-ecps">
           <a class="tile-link" href="https://www.populismstudies.org/from-mass-parties-to-digital-bubbles-how-young-europeans-encounter-politics/" hreflang="en">
-            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>ECPS</span><span class="th-t">From Mass Parties to Digital Bubbles</span><span class="th-l"></span><span class="th-l"></span><span class="th-l th-s"></span></span>
+            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>ECPS</span><span class="th-t">From Mass Parties to Digital Bubbles</span><span class="th-x" lang="en">“A political message on TikTok rarely arrives alone.”</span><span class="th-l"></span><span class="th-l th-s"></span></span>
             <span class="tile-title"><span class="fav fav-pub" aria-hidden="true">EC</span><span lang="en">From Mass Parties to Digital Bubbles: How Young Europeans Encounter Politics</span></span>
           </a>
           <p class="tile-meta"><span class="chip chip-pub"><span data-l="it">Pubblicato</span><span data-l="en">Published</span></span> <time datetime="2026-09-01">2026-09-01</time> · European Center for Populism Studies · <span data-l="it">in inglese</span><span data-l="en">in English</span></p>
@@ -164,7 +204,7 @@
 
         <li class="tile" id="w-sc">
           <a class="tile-link" href="https://www.sistemacritico.it/macron-dice-bene-sullucraina-alleuropa-serve-maggiore-coraggio/" hreflang="it">
-            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>Sistema Critico</span><span class="th-t">Macron dice bene sull’Ucraina</span><span class="th-l"></span><span class="th-l"></span><span class="th-l th-s"></span></span>
+            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>Sistema Critico</span><span class="th-t">Macron dice bene sull’Ucraina</span><span class="th-x" lang="it">“A due anni dall’inizio dell’offensiva russa ai danni dell’Ucraina…”</span><span class="th-l"></span><span class="th-l th-s"></span></span>
             <span class="tile-title"><span class="fav fav-pub" aria-hidden="true">SC</span><span lang="it">Macron dice bene sull’Ucraina: all’Europa serve maggiore coraggio</span></span>
           </a>
           <p class="tile-meta"><span class="chip chip-pub"><span data-l="it">Pubblicato</span><span data-l="en">Published</span></span> <time datetime="2024-03-28">2024-03-28</time> · Sistema Critico · <span data-l="it">in italiano</span><span data-l="en">in Italian</span></p>
@@ -174,7 +214,7 @@
 
         <li class="tile" id="w-sc2">
           <a class="tile-link" href="https://www.sistemacritico.it/milei-non-basta-allargentina-serve-una-rivoluzione-culturale/" hreflang="it">
-            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>Sistema Critico</span><span class="th-t">Milei non basta</span><span class="th-l"></span><span class="th-l"></span><span class="th-l th-s"></span></span>
+            <span class="thumb thumb-pub" aria-hidden="true"><span class="th-bar"><span class="th-dot"></span>Sistema Critico</span><span class="th-t">Milei non basta</span><span class="th-x" lang="it">“Il populismo in tutte le sue forme ha permeato l’ambiente argentino…”</span><span class="th-l"></span><span class="th-l th-s"></span></span>
             <span class="tile-title"><span class="fav fav-pub" aria-hidden="true">SC</span><span lang="it">Milei non basta: all’Argentina serve una rivoluzione culturale più che politica</span></span>
           </a>
           <p class="tile-meta"><span class="chip chip-pub"><span data-l="it">Pubblicato</span><span data-l="en">Published</span></span> <time datetime="2024-02-24">2024-02-24</time> · Sistema Critico · <span data-l="it">in italiano</span><span data-l="en">in Italian</span></p>
@@ -215,8 +255,48 @@
       </ul>
     </section>
 
+    </div>
+
+    <!-- ===================== COSA POSSO SCRIVERE ===================== -->
+    <!--
+      Ogni tema ha: titolo, una frase sul taglio, e il lavoro su cui si basa.
+      Aggiungi un tema copiando un blocco intero, da <li class="topic"> a </li>.
+    -->
+    <section id="topics" class="view" data-panel aria-labelledby="h-topics" data-doc-it="Proposte | Filippo Palmieri" data-doc-en="Pitches | Filippo Palmieri">
+      <h2 id="h-topics" class="ntp-head"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg><span data-l="it">Cosa posso scrivere</span><span data-l="en">What I can write about</span></h2>
+      <p class="note"><span data-l="it">Temi su cui posso proporre articoli, analisi e approfondimenti, in italiano o in inglese.</span><span data-l="en">Subjects I can pitch articles, analysis and longer pieces on, in Italian or English.</span></p>
+
+      <ul class="topics">
+        <li class="topic">
+          <h3 class="topic-title"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Populismo e democrazia liberale</span><span data-l="en">Populism and liberal democracy</span></h3>
+          <p data-l="it">Perché l’etichetta di populismo spiega meno di quanto sembra, e che cosa dice invece sul modo in cui funzionano le democrazie liberali.</p>
+          <p data-l="en">Why the populist label explains less than it seems to, and what it reveals about how liberal democracies actually work.</p>
+          <p class="topic-base"><span data-l="it">Si basa su:</span><span data-l="en">Builds on:</span> <a href="#r-sisp"><span data-l="it">paper SISP</span><span data-l="en">SISP paper</span></a>, <a href="#r-catt"><span data-l="it">contributo Cattolica</span><span data-l="en">Cattolica paper</span></a>, <a href="#w-sc2"><span data-l="it">articolo su Milei</span><span data-l="en">article on Milei</span></a></p>
+        </li>
+        <li class="topic">
+          <h3 class="topic-title"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Giovani, partiti e piattaforme</span><span data-l="en">Young people, parties and platforms</span></h3>
+          <p data-l="it">Come i giovani incontrano la politica ora che i partiti di massa non fanno più da tramite, e che cosa cambia per la partecipazione.</p>
+          <p data-l="en">How young people encounter politics now that mass parties no longer act as the go-between, and what that means for participation.</p>
+          <p class="topic-base"><span data-l="it">Si basa su:</span><span data-l="en">Builds on:</span> <a href="#w-ecps"><span data-l="it">articolo per l’ECPS</span><span data-l="en">ECPS article</span></a></p>
+        </li>
+        <li class="topic">
+          <h3 class="topic-title"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Europa, Ucraina e sicurezza</span><span data-l="en">Europe, Ukraine and security</span></h3>
+          <p data-l="it">Le scelte dei governi europei su Ucraina, difesa e politica estera, lette con gli strumenti della scienza politica.</p>
+          <p data-l="en">European governments’ choices on Ukraine, defence and foreign policy, read through the lens of political science.</p>
+          <p class="topic-base"><span data-l="it">Si basa su:</span><span data-l="en">Builds on:</span> <a href="#w-sc"><span data-l="it">articolo su Macron e l’Ucraina</span><span data-l="en">article on Macron and Ukraine</span></a>, <a href="#about"><span data-l="it">curriculum in Politica e Sicurezza Internazionale</span><span data-l="en">International Politics and Security track</span></a></p>
+        </li>
+        <li class="topic">
+          <h3 class="topic-title"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Politica italiana per lettori stranieri</span><span data-l="en">Italian politics for international readers</span></h3>
+          <p data-l="it">Partiti, governo e riforme istituzionali raccontati in inglese, con il contesto che serve a chi segue l’Italia dall’estero.</p>
+          <p data-l="en">Parties, government and institutional reform explained in English, with the context readers outside Italy need.</p>
+        </li>
+      </ul>
+
+      <p class="cta"><a class="gel gel-primary" href="mailto:filippo.palmieri3@studio.unibo.it?subject=Proposta%20di%20collaborazione" data-l="it">Scrivimi per un pezzo</a><a class="gel gel-primary" href="mailto:filippo.palmieri3@studio.unibo.it?subject=Commission%20enquiry" data-l="en">Email me about a piece</a></p>
+    </section>
+
     <!-- ===================== RICERCA ===================== -->
-    <section id="research" aria-labelledby="h-research">
+    <section id="research" class="view" data-panel aria-labelledby="h-research" data-doc-it="Ricerca | Filippo Palmieri" data-doc-en="Research | Filippo Palmieri">
       <h2 id="h-research" class="ntp-head"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Ricerca</span><span data-l="en">Research</span></h2>
 
       <p class="text" data-l="it">Mi chiedo che cosa succede alla democrazia rappresentativa quando si indeboliscono i soggetti che per decenni hanno collegato cittadini e istituzioni, come partiti, giornali e associazioni. Lavoro su questa domanda in quattro direzioni:</p>
@@ -237,7 +317,7 @@
     </section>
 
     <!-- ===================== CHI SONO ===================== -->
-    <section id="about" aria-labelledby="h-about">
+    <section id="about" class="view" data-panel aria-labelledby="h-about" data-doc-it="Chi sono | Filippo Palmieri" data-doc-en="About | Filippo Palmieri">
       <h2 id="h-about" class="ntp-head"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-folder"/></svg><span data-l="it">Chi sono</span><span data-l="en">About</span></h2>
 
       <div class="about-cols">
@@ -288,7 +368,7 @@
     </section>
 
     <!-- ===================== COLLABORAZIONI E CONTATTI ===================== -->
-    <section id="contact" aria-labelledby="h-contact">
+    <section id="contact" class="view" data-panel aria-labelledby="h-contact" data-doc-it="Contatti | Filippo Palmieri" data-doc-en="Contact | Filippo Palmieri">
       <h2 id="h-contact" class="ntp-head"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-page"/></svg><span data-l="it">Collaborazioni e contatti</span><span data-l="en">Commissions and contact</span></h2>
 
       <div class="contact-cols">
@@ -313,7 +393,7 @@
           <p class="panel-title"><span data-l="it">Recapiti</span><span data-l="en">Details</span></p>
           <dl class="contact-list">
             <dt>Email</dt>
-            <dd><a href="mailto:filippo.palmieri3@studio.unibo.it">filippo.palmieri3@studio.unibo.it</a></dd>
+            <dd><a href="mailto:filippo.palmieri3@studio.unibo.it?subject=Proposta%20di%20collaborazione" data-l="it">filippo.palmieri3@studio.unibo.it</a><a href="mailto:filippo.palmieri3@studio.unibo.it?subject=Commission%20enquiry" data-l="en">filippo.palmieri3@studio.unibo.it</a></dd>
             <dt>LinkedIn</dt>
             <dd><a href="https://www.linkedin.com/in/filippo-palmieri-10010832b/">linkedin.com/in/filippo-palmieri-10010832b</a></dd>
             <dt>ORCID</dt>

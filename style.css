@@ -344,6 +344,18 @@ h1 {
   color: #1d2b44;
 }
 
+/* barra della griglia dei lavori: titolo a sinistra, data dell'elenco a destra */
+.ntp-bar { justify-content: space-between; flex-wrap: wrap; gap: 2px 14px; }
+.ntp-bar h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+.ntp-date { margin: 0; color: var(--ink-soft); font-size: 12.5px; font-weight: normal; }
+
 .note { margin: -4px 0 18px; color: var(--ink-soft); font-size: 13.5px; }
 .text { max-width: 74ch; }
 
@@ -655,9 +667,14 @@ a.tile-link:hover .tile-title > span:last-child { text-decoration: underline; co
   .window { border: 0; border-radius: 0; box-shadow: none; }
   .chrome { position: static; border-radius: 0; }
   section, .tile { scroll-margin-top: 12px; }
-  .tabstrip { height: 34px; padding: 0 8px; }
-  .tab { height: 27px; padding: 0 20px 0 16px; max-width: 76vw; }
-  .toolbar { gap: 6px; padding: 6px 8px; }
+  /* cornice più sottile: il nome compare prima, i preferiti stanno su una riga */
+  .tabstrip { height: 30px; padding: 0 8px; }
+  .tab { height: 25px; padding: 0 20px 0 16px; max-width: 76vw; font-size: 12px; }
+  .newtab { height: 18px; margin-bottom: 3px; }
+  .toolbar { gap: 6px; padding: 4px 8px 5px; }
+  .bookmarks .ico { display: none; }
+  .bookmarks ul { justify-content: space-between; gap: 0; padding: 2px 4px 3px; }
+  .bookmarks a { padding: 3px 7px; }
   .nav-buttons { gap: 3px; }
   .gel-round { width: 28px; min-height: 28px; }
   .omnibox { height: 28px; font-size: 13px; padding: 0 8px 0 6px; gap: 6px; }
@@ -674,6 +691,8 @@ a.tile-link:hover .tile-title > span:last-child { text-decoration: underline; co
 
 @media (max-width: 360px) {
   .nav-buttons [data-action="forward"] { display: none; }
+  .bookmarks a { padding: 3px 4px; font-size: 12px; }
+  .ntp-bar { padding-left: 9px; padding-right: 9px; }
 }
 
 /* ---------- stampa ---------- */

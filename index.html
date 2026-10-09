@@ -22,7 +22,7 @@
 <link rel="alternate" hreflang="en" href="https://filippopalmieri00.github.io/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://filippopalmieri00.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <script>
   /* Sceglie la lingua prima che la pagina compaia: l'indirizzo con ?lang=en apre la versione inglese. */
   (function () {
@@ -33,7 +33,7 @@
     } catch (e) {}
   })();
 </script>
-<script src="main.js?v=4" defer></script>
+<script src="main.js?v=5" defer></script>
 </head>
 <body>
 
@@ -42,7 +42,8 @@
   - Ogni testo compare due volte: data-l="it" per l'italiano, data-l="en" per l'inglese.
   - Titoli, nomi, date e link si scrivono una volta sola.
   - Per aggiungere un lavoro copia un riquadro intero, da <li class="tile"> a </li>.
-  - Dopo ogni modifica aggiorna la data in fondo alla pagina ("Ultimo aggiornamento").
+  - Dopo ogni modifica aggiorna la data in fondo alla pagina ("Ultimo aggiornamento");
+    se hai aggiunto o cambiato un lavoro, aggiorna anche "Elenco aggiornato al" sopra la griglia.
 -->
 
 <a class="skip" href="#main"><span data-l="it">Vai al contenuto</span><span data-l="en">Skip to content</span></a>
@@ -135,7 +136,11 @@
 
     <!-- ===================== LAVORI: GRIGLIA "PIÙ VISITATI" ===================== -->
     <section id="works" aria-labelledby="h-works">
-      <h2 id="h-works" class="ntp-head"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-grid"/></svg><span data-l="it">Lavori</span><span data-l="en">Work</span></h2>
+      <div class="ntp-head ntp-bar">
+        <h2 id="h-works"><svg class="ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><use href="#ico-grid"/></svg><span data-l="it">Lavori</span><span data-l="en">Work</span></h2>
+        <!-- Quando aggiungi o cambi un lavoro, aggiorna questa data e quella in fondo alla pagina -->
+        <p class="ntp-date"><span data-l="it">Elenco aggiornato al</span><span data-l="en">List updated</span> <time datetime="2026-10-09">2026-10-09</time></p>
+      </div>
       <p class="note"><span data-l="it">Articoli pubblicati, interventi a convegni e manoscritti. Lo stato di ogni lavoro è indicato sotto il titolo.</span><span data-l="en">Published articles, conference papers and manuscripts. The status of each item is shown under its title.</span></p>
 
       <!--
@@ -322,7 +327,7 @@
 
     <footer class="site-footer">
       <a class="gel gel-small" href="#top"><span data-l="it">↑ Torna all’inizio</span><span data-l="en">↑ Back to top</span></a>
-      <p><span data-l="it">Ultimo aggiornamento:</span><span data-l="en">Last updated:</span> <time datetime="2026-10-08">2026-10-08</time> · <span data-l="it">Questo sito non usa cookie né sistemi di tracciamento.</span><span data-l="en">This site uses no cookies and no tracking.</span> · © 2026 Filippo Palmieri</p>
+      <p><span data-l="it">Ultimo aggiornamento:</span><span data-l="en">Last updated:</span> <time datetime="2026-10-09">2026-10-09</time> · <span data-l="it">Questo sito non usa cookie né sistemi di tracciamento.</span><span data-l="en">This site uses no cookies and no tracking.</span> · © 2026 Filippo Palmieri</p>
     </footer>
 
   </main>

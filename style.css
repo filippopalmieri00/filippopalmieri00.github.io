@@ -36,6 +36,7 @@
   --talk: #2e8a57;
   --ms: #b8781a;
   --cv: #6b7a90;
+  --thesis: #6a4fa8;
 
   --focus: #1a47d6;
   --target: #fff5c2;
@@ -441,6 +442,32 @@ sup.ref a { text-decoration: none; }
 sup.ref a:hover { text-decoration: underline; }
 
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
+
+/* disponibilità per commissioni, in apertura */
+.avail {
+  max-width: 66ch;
+  margin: 18px 0 0;
+  padding: 12px 16px 14px;
+  border: 1px solid #c7d3e6;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #f7faff, #edf3fc);
+}
+.avail-text { margin: 0; font-size: 15px; line-height: 1.55; }
+.avail-label { margin: 10px 0 6px; color: var(--ink-soft); font-size: 12.5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; }
+.avail-topics { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 0; padding: 0; list-style: none; }
+.avail-topics a {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #9db3d2;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #eef3fa 50%, #f4f7fc 100%);
+  color: var(--gel-text);
+  font-size: 13px;
+  line-height: 20px;
+  text-decoration: none;
+}
+.avail-topics a:visited { color: var(--gel-text); }
+.avail-topics a:hover { border-color: #5c80b6; text-decoration: underline; }
 .cta .gel { min-height: 34px; padding: 0 18px; font-size: 14px; }
 
 /* scheda (infobox) */
@@ -573,6 +600,7 @@ a.tile-link:hover .tile-title > span:last-child { text-decoration: underline; co
 .thumb-pub .th-bar { background: linear-gradient(to bottom, #5d93e6, var(--pub)); }
 .thumb-talk .th-bar { background: linear-gradient(to bottom, #58b07f, var(--talk)); }
 .thumb-ms .th-bar { background: linear-gradient(to bottom, #d79b3e, var(--ms)); }
+.thumb-thesis .th-bar { background: linear-gradient(to bottom, #8a72c4, var(--thesis)); }
 
 .thumb-cv { align-items: center; justify-content: center; padding: 10px; background: linear-gradient(to bottom, #eef2f8, #e2e8f1); }
 .th-page {
@@ -615,6 +643,7 @@ a.tile-link:hover .tile-title > span:last-child { text-decoration: underline; co
 .fav-talk { background: var(--talk); }
 .fav-ms { background: var(--ms); }
 .fav-cv { background: var(--cv); }
+.fav-thesis { background: var(--thesis); }
 
 .tile-meta { margin: 8px 0 6px 24px; color: var(--ink-soft); font-size: 12.5px; line-height: 1.5; }
 .tile-desc { margin: 0 0 0 24px; font-size: 13.5px; line-height: 1.5; }
@@ -635,6 +664,24 @@ a.tile-link:hover .tile-title > span:last-child { text-decoration: underline; co
 .chip-talk { color: #22673f; border-color: #9ccbb0; }
 .chip-ms { color: #8a5810; border-color: #ddbb85; }
 .chip-cv { color: #44516a; border-color: #b9c4d3; }
+.chip-thesis { color: #563d8f; border-color: #c2b3e0; }
+
+/* link ai testi completi in PDF, sotto la descrizione */
+.tile-files { margin: 8px 0 0 24px; padding-top: 7px; border-top: 1px dotted var(--line-strong); font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); }
+
+/* sottotitoli dentro la sezione Lavori */
+.works-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 12px;
+  color: #1d2b44;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.works-sub::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+.note + .works-sub { margin-top: 6px; }
 
 /* ---------- ricerca ---------- */
 

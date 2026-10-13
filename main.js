@@ -53,7 +53,7 @@
     });
 
     showAddress();
-    if (tabbed()) docTitle(currentView());
+    docTitle(currentView());
   }
 
   function rememberInAddress(lang) {
@@ -115,8 +115,10 @@
     });
   }
 
+  /* Titolo della finestra nella lingua scelta: sezione aperta sul computer, titolo del sito sul telefono */
   function docTitle(view) {
-    var t = tabbed() && view ? view.getAttribute("data-doc-" + current()) : null;
+    var v = tabbed() && view ? view : home;
+    var t = v ? v.getAttribute("data-doc-" + current()) : null;
     document.title = t || baseTitle;
   }
 
@@ -151,7 +153,7 @@
       syncFromLocation(initial === true);
     } else {
       markTab("home", false);
-      document.title = baseTitle;
+      docTitle(home);
     }
   }
 
